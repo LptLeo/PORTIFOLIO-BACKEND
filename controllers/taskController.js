@@ -1,4 +1,4 @@
-import Task from "../models/Task.js";
+import Task from '../models/Task.js';
 
 class TaskController {
   static async getTasks(req, res) {
@@ -6,7 +6,7 @@ class TaskController {
       const taskList = await Task.find({});
       res
         .status(200)
-        .json({ message: "Tarefas obtidas com sucesso", taskList });
+        .json({ message: 'Tarefas obtidas com sucesso', taskList });
     } catch (error) {
       res.status(500).json({ message: `Falha ao obter tarefas - ${error}` });
     }
@@ -18,7 +18,7 @@ class TaskController {
       const listedTask = await Task.findById(id);
       res
         .status(200)
-        .json({ message: "Tarefa obtida com sucesso", listedTask });
+        .json({ message: 'Tarefa obtida com sucesso', listedTask });
     } catch (error) {
       res.status(500).json({ message: `Falha ao obter tarefa - ${error}` });
     }
@@ -27,7 +27,7 @@ class TaskController {
   static async createTask(req, res) {
     try {
       const newTask = await Task.create(req.body);
-      res.status(201).json({ message: "Tarefa criada com sucesso", newTask });
+      res.status(201).json({ message: 'Tarefa criada com sucesso', newTask });
     } catch (error) {
       res.status(500).json({ message: `Falha ao criar tarefa - ${error}` });
     }
@@ -39,7 +39,7 @@ class TaskController {
       const updatedTask = await Task.findByIdAndUpdate(id, req.body);
       res
         .status(200)
-        .json({ message: "Tarefa atualizada com sucesso", updatedTask });
+        .json({ message: 'Tarefa atualizada com sucesso', updatedTask });
     } catch (error) {
       res.status(500).json({ message: `Falha ao atualizar tarefa - ${error}` });
     }
@@ -49,7 +49,7 @@ class TaskController {
     try {
       const id = req.params.id;
       await Task.findByIdAndDelete(id);
-      res.status(200).json({ message: "Tarefa atualizada com sucesso" });
+      res.status(200).json({ message: 'Tarefa atualizada com sucesso' });
     } catch (error) {
       res.status(500).json({ message: `Falha ao excluir tarefa - ${error}` });
     }
@@ -59,7 +59,7 @@ class TaskController {
     try {
       const idsArray = req.body;
       await Task.deleteMany({ _id: { $in: idsArray } });
-      res.status(200).json({ message: "Tarefas excluídas com sucesso" });
+      res.status(200).json({ message: 'Tarefas excluídas com sucesso' });
     } catch (error) {
       res
         .status(500)
